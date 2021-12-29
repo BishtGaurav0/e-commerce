@@ -31,13 +31,6 @@ const Dashboard = () => {
   const [readMore, setReadMore] = useState(false);
   const [open, setOpen] = React.useState(false);
 
-  const [pImageUrl, setPimageUrl] = useState("");
-  const [pTitile, setPtitle] = useState("");
-  const [pDescription, setPdescription] = useState("");
-  const [pAmount, setPamount] = useState("");
-
-  // console.log(pImageUrl, pTitile, pDescription, pAmount);
-
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -60,36 +53,6 @@ const Dashboard = () => {
     setLoading(true);
     fetchData();
   }, []);
-
-  // const addNewProducts = async(pTitile, pAmount, pDescription, pImageUrl) => {
-  //   try{
-  //     const response = await fetch("https://fakestoreapi.com/products", {
-  //       method: "POST",
-  //       body: JSON.stringify({
-  //         title: {pTitile},
-  //         price: {pAmount},
-  //         description: {pDescription},
-  //         image: {pImageUrl},
-  //         category: "clothing",
-  //       }),
-  //     })
-  //     const data = await response.json();
-  //     console.log("Product data is",data);    
-  //   }
-  //   catch(err) {
-  //     console.log("Error in Adding New Product", err)
-  //   }
-  // }
-
-  // const handleAddProducts = () => {
-  //   if(pTitile && pAmount && pDescription && pImageUrl) {
-  //     addNewProducts(pTitile, pAmount, pDescription, pImageUrl);
-  //     console.log("Product Added");
-  //     handleClose();
-  //   } else {
-  //     alert("Enter Valid Input ");
-  //   }
-  // };
 
 
   // shop now
@@ -129,90 +92,8 @@ const Dashboard = () => {
   };
 
   return (
-    <div style={{backgroundColor:'whitesmoke'}}>
-      <div>
-        <div>
-          <div style={{ textAlign: "end" }}>
-            <Button
-              style={{ margin: "50px" }}
-              variant="contained"
-              size="large"
-              onClick={handleOpen}
-            >
-              Add New Products
-            </Button>
-          </div>
-
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                Create Product
-              </Typography>
-
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                <TextField
-                  autoComplete="given-name"
-                  name="ImageURL"
-                  fullWidth
-                  autoFocus
-                  label="Image URL"
-                  onChange={(e) => setPimageUrl(e.target.value)}
-                />
-              </Typography>
-
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                <TextField
-                  autoComplete="given-name"
-                  name="Title"
-                  fullWidth
-                  label="Title"
-                  onChange={(e) => setPtitle(e.target.value)}
-                />
-              </Typography>
-
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                <TextField
-                  autoComplete="given-name"
-                  name="Description"
-                  fullWidth
-                  label="Description"
-                  onChange={(e) => setPdescription(e.target.value)}
-                />
-              </Typography>
-
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                <TextField
-                  autoComplete="given-name"
-                  name="Amount"
-                  fullWidth
-                  label="Amount"
-                  onChange={(e) => setPamount(e.target.value)}
-                />
-              </Typography>
-
-              <Typography
-                id="modal-modal-description"
-                sx={{ mt: 2 }}
-                style={{ textAlign: "center" }}
-              >
-                <Button
-                  variant="contained"
-                  size="medium"
-                  color="success"
-                  // onClick={handleAddProducts}
-                >
-                  Add
-                </Button>
-              </Typography>
-            </Box>
-          </Modal>
-        </div>
-
+    <div >
+      <div style={{backgroundColor:'whitesmoke', paddingTop:'3vh'}}>
         {!loading ? (
           <div className="card-details">
             {data.map((e, i) => (

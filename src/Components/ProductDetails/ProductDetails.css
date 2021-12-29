@@ -1,8 +1,9 @@
 #product-details {
     display: flex;
     justify-content: space-around;
-    margin: 50px;
     height: 80vh;
+    margin-top: 2vh;
+    padding: 50px;
 }
 
 #left-bar {
