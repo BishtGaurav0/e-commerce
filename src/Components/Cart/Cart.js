@@ -1,11 +1,13 @@
 import React, {useState} from "react";
 import "./Cart.css";
 import Card from "@mui/material/Card";
+import emptyCart from '../../Assests/emptyCart.gif'
 import Typography from "@mui/material/Typography";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import { Button, CardActions } from "@mui/material";
 import {useHistory,Link } from "react-router-dom";
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
 const Cart = () => {
   const history = useHistory();
@@ -20,13 +22,13 @@ const Cart = () => {
     return obj;
   })
 
-  // console.log(cartItem);
+  console.log(cartItem);
 
 
   // ---------------------------------------------------
   let total = 0;
-  let promoDiscount = Math.random().toFixed(2) * 5 ; 
-  let shippingFee = Math.random().toFixed(2) * 50 ;
+  let promoDiscount = Math.random().toFixed(2) * 20 ; 
+  let shippingFee = Math.random().toFixed(2) * 75 ;
   
   let items ;
   
@@ -71,7 +73,8 @@ const Cart = () => {
 
       <div className="cart">
         <div>
-          {cartItem !== undefined && cartItem !== null && cartItem.length > 0 ? (
+          {
+          cartItem !== undefined && cartItem !== null && cartItem.length > 0 ? (
             cartItem.map((e, i) => (
               <Card
                 sx={{ width: 800, minHeight: 350, margin: 1 }}
@@ -92,21 +95,23 @@ const Cart = () => {
                   />
                 </div>
 
-                <div>
+                <div id="cart-info">
                   <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography gutterBottom variant="h5" component="div" id="cart-name">
                       <Link to = '/product' style={{color:'black'}}> <h3> {e.name} </h3> </Link>
                     </Typography>
 
-                    <Typography variant="h4">Rs. {e.price}</Typography>
+                    <Typography variant="h4" id='cart-brand'> <label> Brand: {e.brand} </label> </Typography>
 
-                    <Typography className="qty-btn">
+                    <Typography variant="h4" id='cart-price'>Rs. {e.price}</Typography>
+
+                    <Typography id="qty-btn">
                       <Button size='small' onClick = { () => handleDecQuantity(e)} > - </Button>
                       <label> {e.quantity} </label>
                       <Button size='small' onClick = { () => handleIncQuantity(e)} > + </Button>
                     </Typography>
 
-                    <Typography>
+                    <Typography id="remove-cart">
                       <Button 
                         color="error" 
                         size="large"
@@ -116,17 +121,15 @@ const Cart = () => {
                         Remove 
                       </Button>
                     </Typography>
-
-
                   </CardContent>
-              </div>
+                </div>
               </Card>
 
             )) 
           ) : (
             <div className="empty-cart">
               <img
-                src="https://www.seekpng.com/png/detail/117-1170538_404-your-cart-is-empty.png"
+                src={emptyCart}
                 alt="empty cart"
               />
             </div>
@@ -144,7 +147,7 @@ const Cart = () => {
           </div>
 
           <div className="summary">
-            <h3> Promos: </h3>
+            <h3> Discount: </h3>
             <p> Rs. - {promoDiscount.toFixed(2)} </p>
           </div>
 
@@ -167,6 +170,8 @@ const Cart = () => {
               onClick={handlePlacedOrder}
               >
               CHECKOUT
+              
+              <ArrowRightAltIcon />
             </Button>
           </CardActions>
         </div> 

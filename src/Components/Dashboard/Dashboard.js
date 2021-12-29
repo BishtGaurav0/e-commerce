@@ -76,7 +76,7 @@ const Dashboard = () => {
 
   return (
     <div >
-      <div style={{backgroundColor:'whitesmoke', padding:'3vh 0'}}>
+      <div style={{backgroundColor:'whitesmoke', padding:'2vh 0'}}>
         {!loading ? (
           <div className="card-details">
             {
@@ -105,7 +105,7 @@ const Dashboard = () => {
                     {e.title}
                   </Typography>
 
-                  <Typography variant="body2" color="text.secondary" style={{fontFamily:"'Philosopher', sans-serif"}}>
+                  <Typography variant="body"  color="text" style={{fontFamily:"'Philosopher', sans-serif"}}>
                     {readMore ? e.description : e.description.substr(0, 100)}
                     <Button
                       onClick={() => setReadMore(!readMore)}
@@ -117,7 +117,6 @@ const Dashboard = () => {
 
                   <Typography
                     variant="body2"
-                    color="text.secondary"
                     style={{
                       color: "black",
                       fontWeight: "800",
@@ -152,17 +151,14 @@ const Dashboard = () => {
             ))}
           </div>
         ) : (
-          <div style={{ textAlign: "center" }}>
+          <div id="loading">
             <img src={LoadingGif} alt="loading..." />
-
-            <h1> Please Wait While we are loading stuffs for you.. </h1>
           </div>
         )}
       </div>
 
       <Footer />
-      
-
+    
     </div>
   );
   

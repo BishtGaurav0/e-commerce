@@ -6,4 +6,13 @@
     margin: 50px;
     padding: 20px;
     justify-content: space-around;
+   
 }
+
+#loading {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    height: 70vh;
+}
+

@@ -8,12 +8,13 @@
 
 #left-bar {
     display: flex;
+    padding: 20px;
 }
 
 #all-photos {
     display: flex;
     flex-direction: column;
-    margin-right: 12px;
+    padding-right: 12px;
     justify-content: space-evenly;
 }
 
@@ -24,16 +25,12 @@
     width: 50%;
 }
 
-
-#product-btns button {
-    margin-right: 10px;
-    margin-top: 50px;
-}
-
 #right-top{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    background-color: rgb(248, 248, 248);
+    padding: 20px;
 }
 
 #title{
@@ -41,20 +38,40 @@
 }
 
 #code {
-    margin: 0px;
-}
-
-#price h1{
-    margin: 0 ;
-    padding: 5px 0;
+    margin:5px 0px 10px 0;
 }
 
 #ratings div{
     margin-bottom: 0;
 }
 
+#price {
+    border-bottom: 1px solid grey;
+}
+
+#price h1{
+    margin-top: 5px;
+    margin-bottom: 0;
+    padding: 5px 0;
+}
+
+#sizes {
+    margin: 20px 0;
+}
+
+.size {
+    border: 1px solid grey;
+    padding: 12px;
+    margin-right: 10px;
+    border-radius: 25%;
+}
+
 #pincode{
-    margin-top: 30px;
+    margin-top: 20px;
+}
+
+#pincode h4 {
+    margin: 10px 0;
 }
 
 #pin{
@@ -62,21 +79,26 @@
     align-items: center;
 }
 
+#outlined-basic{
+    padding: 10px;
+}
+
 #check-btn {
     margin-left: 10px;
-}
-
-#price {
-    border-bottom: 1px solid grey;
-}
-
-.size {
-    border: 1px solid grey;
-    padding: 12px;
     margin-right: 10px;
-    border-radius: 50%;
+}   
+
+#product-btns button {
+    margin-right: 10px;
+    margin-top: 50px;
 }
 
 #right-bottom {
     text-align: justify;
+    padding: 20px;
+    background-color: rgb(248, 248, 248);
+}
+
+#right-bottom label {
+    font-size: 1.2rem;
 }

@@ -1,12 +1,17 @@
 import { Button, TextField } from '@mui/material';
-import React from 'react'
+import React, { useState } from 'react'
 import './ProductDetails.css'
 import ReactStars from "react-rating-stars-component";
 import { useHistory } from 'react-router-dom';
 import Footer from '../Footer/Footer';
+import VerifiedIcon from '@mui/icons-material/Verified';
+import GppMaybeIcon from '@mui/icons-material/GppMaybe';
 
 const ProductDetails = () => {
     const history = useHistory();
+    const [inputPin, setInputPin] = useState("")
+    const [showVerify, setshowVerify] = useState(false);
+    
     const data = JSON.parse(localStorage.getItem("product-info")) ;
     // console.log("in product",data);
 
@@ -41,7 +46,8 @@ const ProductDetails = () => {
     };
 
     const handleCheck = () => {
-
+        inputPin.length === 6 && setshowVerify(true);
+        inputPin.length === 0 && setshowVerify(false)
     }
 
     const handleBuyNow = () => {
@@ -57,7 +63,7 @@ const ProductDetails = () => {
                     {
                         data.photos.map( (e, i)=> (
                             <img src={e} alt="photos" key={i}
-                                style={ {width: "6vw", maxHeight: "11.5vh", objectFit: "fill", marginBottom:'6px'} } />
+                                style={ {width: "6vw", maxHeight: "11.5vh", objectFit: "fill"} } />
                         ) )
                     }
                 </div>
@@ -66,7 +72,7 @@ const ProductDetails = () => {
                     <img 
                         src={data.preview} 
                         alt="preview"  
-                        style={ {width: "20vw", height: "75vh", objectFit: "cover"} } />
+                        style={ {width: "20vw", height: "70vh", objectFit: "cover"} } />
 
                 </div>
             </div>
@@ -77,7 +83,7 @@ const ProductDetails = () => {
                     <div>
                         <label> Brand : {data.brand} </label>
                         <h1 id='title'> {data.name} </h1>
-                        <h5 id='code'> Product Code : {data.id} </h5>
+                        <label id='code'> Product Code : {data.id} </label>
 
                         <div id='ratings'>
                             <ReactStars 
@@ -110,8 +116,13 @@ const ProductDetails = () => {
                     <div id='pincode'>
                         <h4> Check Delivery Pincode </h4>
                         <div  id='pin'>
-                            <TextField id="outlined-basic" placeholder='Enter Pincode' variant="outlined" /> 
+                            <TextField id="outlined-basic" placeholder='Enter Pincode' variant="outlined" onChange={(e) => setInputPin(e.target.value)}/> 
                             <Button id='check-btn' onClick={handleCheck} variant='outlined' size='large'> Check </Button>
+
+                            {showVerify ?
+                                <VerifiedIcon style={{color:'green'}}/> :
+                                <GppMaybeIcon   style={{color:'red'}}/>
+                            }
                         </div>
                     </div>
 
@@ -123,7 +134,7 @@ const ProductDetails = () => {
 
                 <div id='right-bottom'>
                     <h1> Description </h1>
-                    <h3> {data.description} </h3>
+                    <label> {data.description} </label>
                 </div>
             </div>
 
