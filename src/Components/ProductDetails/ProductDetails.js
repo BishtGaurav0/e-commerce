@@ -3,6 +3,7 @@ import React from 'react'
 import './ProductDetails.css'
 import ReactStars from "react-rating-stars-component";
 import { useHistory } from 'react-router-dom';
+import Footer from '../Footer/Footer';
 
 const ProductDetails = () => {
     const history = useHistory();
@@ -49,6 +50,7 @@ const ProductDetails = () => {
     }
 
     return (
+        <>
         <div id='product-details'>
             <div id='left-bar'>
                 <div id='all-photos'>
@@ -124,7 +126,11 @@ const ProductDetails = () => {
                     <h3> {data.description} </h3>
                 </div>
             </div>
+
         </div>
+        
+            <Footer/>
+        </>
 
     )
 }

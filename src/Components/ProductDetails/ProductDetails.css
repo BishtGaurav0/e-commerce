@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-around;
     margin: 50px;
+    height: 80vh;
 }
 
 #left-bar {
@@ -32,7 +33,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 50vh;
 }
 
 #title{
