@@ -1,0 +1,81 @@
+#product-details {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px;
+}
+
+#left-bar {
+    display: flex;
+}
+
+#all-photos {
+    display: flex;
+    flex-direction: column;
+    margin-right: 12px;
+    justify-content: space-evenly;
+}
+
+#right-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    width: 50%;
+}
+
+
+#product-btns button {
+    margin-right: 10px;
+    margin-top: 50px;
+}
+
+#right-top{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 50vh;
+}
+
+#title{
+    margin: 5px 0;
+}
+
+#code {
+    margin: 0px;
+}
+
+#price h1{
+    margin: 0 ;
+    padding: 5px 0;
+}
+
+#ratings div{
+    margin-bottom: 0;
+}
+
+#pincode{
+    margin-top: 30px;
+}
+
+#pin{
+    display: flex;
+    align-items: center;
+}
+
+#check-btn {
+    margin-left: 10px;
+}
+
+#price {
+    border-bottom: 1px solid grey;
+}
+
+.size {
+    border: 1px solid grey;
+    padding: 12px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+#right-bottom {
+    text-align: justify;
+}

@@ -1,0 +1,17 @@
+#footer {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 3rem;
+    background-image: url(https://static01.manyavar.com/uploads/images/footer_top_bg.jpg);
+    flex-wrap: wrap;
+}
+
+#footer div{
+    text-align: center;
+    color: white    ;
+}
+
+#footer div h2 {
+    color: wheat;
+    font-weight: 900;
+}

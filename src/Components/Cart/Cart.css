@@ -1,0 +1,53 @@
+.cart {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.cart-heading {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid gainsboro;
+}
+
+.qty-btn {
+    display: inline-block;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+
+.order-summary {
+    text-align: center;
+    background-color: whitesmoke;
+    height: 50%;
+    width: 20%;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.order-summary h1 {
+    border-bottom: 1px solid gainsboro;
+    padding-bottom: 20px;
+}
+
+.summary {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+.empty-cart {
+    text-align: center;
+}
+
+.empty-cart img {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 100%;
+}
