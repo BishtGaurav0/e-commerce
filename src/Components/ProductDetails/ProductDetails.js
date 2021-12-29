@@ -25,7 +25,7 @@ const ProductDetails = () => {
       } else {
         let list = [];
   
-        getItems.map((element) => {
+        getItems.forEach((element) => { 
           if (element.id === e.id) {
             flag = false;
             alert("Product is already present in the Cart");
@@ -129,7 +129,9 @@ const ProductDetails = () => {
 
         </div>
         
+        <div style={{marginTop:'10vh'}}>
             <Footer/>
+        </div>
         </>
 
     )

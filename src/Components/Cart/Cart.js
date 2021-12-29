@@ -95,7 +95,7 @@ const Cart = () => {
                 <div>
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      <Link to = '/product' style={{color:'black'}}> <h2> {e.name} </h2> </Link>
+                      <Link to = '/product' style={{color:'black'}}> <h3> {e.name} </h3> </Link>
                     </Typography>
 
                     <Typography variant="h4">Rs. {e.price}</Typography>

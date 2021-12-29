@@ -4,12 +4,3 @@
     font-family: 'Philosopher', sans-serif;
 }
 
-.card-details {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    row-gap: 100px;
-    align-items: center;
-    margin:50px;
-    padding: 20px;
-    text-align: justify;
-}

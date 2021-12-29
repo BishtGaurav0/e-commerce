@@ -1,0 +1,9 @@
+.card-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 5vw;
+    text-align: justify;
+    margin: 50px;
+    padding: 20px;
+    justify-content: space-around;
+}

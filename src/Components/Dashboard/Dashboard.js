@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import './Dashboard.css'
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -7,32 +8,14 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Footer from "../Footer/Footer";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import TextField from "@mui/material/TextField";
+
 import LoadingGif from '../../Assests/Loading.gif'
 import { useHistory } from "react-router-dom";
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [readMore, setReadMore] = useState(false);
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   // console.log("data is ", data);
 
@@ -76,7 +59,7 @@ const Dashboard = () => {
     } else {
       let list = [];
 
-      getItems.map((element) => {
+      getItems.forEach((element) => {
         if (element.id === e.id) {
           flag = false;
           alert("Product is already present in the Cart");
@@ -93,11 +76,12 @@ const Dashboard = () => {
 
   return (
     <div >
-      <div style={{backgroundColor:'whitesmoke', paddingTop:'3vh'}}>
+      <div style={{backgroundColor:'whitesmoke', padding:'3vh 0'}}>
         {!loading ? (
           <div className="card-details">
-            {data.map((e, i) => (
-              <Card sx={{ maxWidth: 345, minHeight: 520, borderRadius:'8px'}} key={i}>
+            {
+            data.map((e, i) => (
+              <Card sx={{ maxWidth: 345, height: 510, borderRadius:'8px'}} key={i} >
                 <CardMedia
                   component="img"
                   image={e.preview}
@@ -122,7 +106,7 @@ const Dashboard = () => {
                   </Typography>
 
                   <Typography variant="body2" color="text.secondary" style={{fontFamily:"'Philosopher', sans-serif"}}>
-                    {readMore ? e.description : e.description.substr(0, 150)}
+                    {readMore ? e.description : e.description.substr(0, 100)}
                     <Button
                       onClick={() => setReadMore(!readMore)}
                       style={{ textTransform: "lowercase" }}
@@ -177,6 +161,8 @@ const Dashboard = () => {
       </div>
 
       <Footer />
+      
+
     </div>
   );
   
