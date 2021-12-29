@@ -1,4 +1,5 @@
 import React from "react";
+import './CarouselComp.css'
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import carouselImg1 from "../../Assests/CarouselImages/1.jpg";
@@ -9,11 +10,11 @@ import carouselImg5 from "../../Assests/CarouselImages/5.webp";
 
 const CarouselComp = () => {
   return (
-    <div className="carousel">
+    <div className="carousel" >
       <Carousel infiniteLoop autoPlay showThumbs={false}>
         <div>
           <div>
-            <img src={carouselImg1} alt="1" />
+            <img src={carouselImg1} alt="1"/>
           </div>
         </div>
 

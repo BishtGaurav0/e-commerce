@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import { Button, CardActions } from "@mui/material";
-import {useHistory } from "react-router-dom";
+import {useHistory,Link } from "react-router-dom";
 
 const Cart = () => {
   const history = useHistory();
@@ -14,13 +14,13 @@ const Cart = () => {
 
   const [quantity, setQuantity] = useState(1);
   
-  let cartItem = cart.map( function(e) {
+  let cartItem = cart?.map( function(e) {
     let obj = Object.assign({}, e);
     obj.quantity = quantity;
     return obj;
   })
 
-  console.log(cartItem)
+  // console.log(cartItem);
 
 
   // ---------------------------------------------------
@@ -95,7 +95,7 @@ const Cart = () => {
                 <div>
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      {e.name}
+                      <Link to = '/product' style={{color:'black'}}> <h2> {e.name} </h2> </Link>
                     </Typography>
 
                     <Typography variant="h4">Rs. {e.price}</Typography>
