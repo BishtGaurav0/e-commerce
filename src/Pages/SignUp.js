@@ -59,11 +59,11 @@ export default function SignUp() {
       } 
       catch (err) {
         console.log("error in signup", err);
-        showNotification(err.message);
+        showNotification(err.message, "alert", 1000);
       }
     }
      else {
-      showNotification("Input Can't be empty ");
+      showNotification("Input Can't be empty", "alert", 1000);
     }
   };
 
