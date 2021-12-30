@@ -12,7 +12,6 @@ import CarouselComp from './Components/CarouselComp/CarouselComp';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
 
 function App() {
-
   let userEmail = localStorage.getItem("ecomUser")
 
   function PrivateRoute ({Component, path}) {
@@ -36,7 +35,6 @@ function App() {
           <Route exact path = {'/signup'} component={SignUp} />
           <Route exact path = {'/signin'} component={SignIn} />
           <PrivateRoute exact path = {'/dashboard'} Component={Dashboard} />
-          {/* <Route exact path = {'/dashboard'} component={Dashboard} /> */}
           <PrivateRoute exact path = {'/product'} Component={ProductDetails} />
           <PrivateRoute exact path = {'/cart'} Component={Cart} />
           <PrivateRoute exact path = {'/checkout'} Component={CheckoutComp} />

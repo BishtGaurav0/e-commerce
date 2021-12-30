@@ -56,14 +56,15 @@ export default function SignUp() {
         await signUp(email, password);
         console.log("Signup Successfully");
         history.push("/signin");
+        showNotification("Sign up Successfully", "success", 1000)
       } 
       catch (err) {
         console.log("error in signup", err);
-        showNotification(err.message, "alert", 1000);
+        showNotification(err.message, "error", 1000);
       }
     }
      else {
-      showNotification("Input Can't be empty", "alert", 1000);
+      showNotification("Input Can't be empty", "warning", 1000);
     }
   };
 

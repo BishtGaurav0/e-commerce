@@ -25,7 +25,7 @@ const ProductDetails = () => {
       let flag = true; // data is present
   
       if (getItems === undefined || getItems === null) {
-        showNotification("Added to the Cart", "alert", 1000)
+        showNotification("Added to the Cart", "success", 1000)
         cartItem.push(e);
         localStorage.setItem("cart", JSON.stringify(cartItem));
 
@@ -35,12 +35,12 @@ const ProductDetails = () => {
         getItems.forEach((element) => { 
           if (element.id === e.id) {
             flag = false;
-            showNotification("Product is already present", "alert", 1000)
+            showNotification("Product is already present", "warning", 1000);
           }
         });
   
         if (flag) {
-          showNotification("Added to the Cart", "alert", 1000)
+          showNotification("Added to the Cart", "success", 1000)
           list = [e, ...getItems];
           localStorage.setItem("cart", JSON.stringify(list));
         }
@@ -49,8 +49,7 @@ const ProductDetails = () => {
     };
 
     const handleCheck = () => {
-        inputPin.length === 6 && setshowVerify(true);
-        inputPin.length === 0 && setshowVerify(false)
+        inputPin.length > 6 || inputPin.length < 6 ? setshowVerify(false): setshowVerify(true);
     }
 
     const handleBuyNow = () => {

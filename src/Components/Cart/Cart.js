@@ -8,28 +8,18 @@ import CardMedia from "@mui/material/CardMedia";
 import { Button, CardActions } from "@mui/material";
 import {useHistory,Link } from "react-router-dom";
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+import { showNotification } from "../../Helpers/notification";
 
 const Cart = () => {
   const history = useHistory();
 
   let cart =  JSON.parse(localStorage.getItem("cart"));
 
-  // let cartLength = cart.length;
-  const [quantity, setQuantity] = useState([]);
-
-  useEffect(() => {
-    let ref = [];
-
-    for(let i=0; i<15; i++){
-      ref.push(1);
-    }
-    setQuantity(ref);
-
-  }, []);
+  const [quantity, setQuantity] = useState(1);
 
   let cartItem = cart?.map( function(e) {
     let obj = Object.assign({}, e);
-    obj.quantity = quantity[parseInt(e.id)];
+    obj.quantity = quantity
     return obj;
   })
 
@@ -56,11 +46,7 @@ const Cart = () => {
   let orderTotal = (total - promoDiscount + shippingFee); 
 
   const handleIncQuantity = (e) => {
-    console.log("Quantity Increased", e);
-    let temp = quantity;
-    temp[parseInt(e.id)] += 1;
-    setQuantity(temp)
-    console.log(quantity)
+    
   }
 
   const handleDecQuantity = (e) => {
@@ -75,8 +61,8 @@ const Cart = () => {
   const handleRemoveCart = (id) => {
     let newCart = cartItem.filter( (e)=> e.id !== id );
     console.log(newCart) ;  
+    showNotification("Item removed from the cart", "info", 1000);
     localStorage.setItem("cart", JSON.stringify(newCart));
-    alert("Item Removed from the Cart");    
     history.push('/cart');
   }
 
@@ -121,7 +107,7 @@ const Cart = () => {
 
                     <Typography id="qty-btn">
                       <Button size='small' onClick = { () => handleDecQuantity(e)} > - </Button>
-                      <label> { quantity[parseInt(e.id)] } </label>
+                      <label> { e.quantity } </label>
                       <Button size='small' onClick = { () => handleIncQuantity(e)} > + </Button>
                     </Typography>
 

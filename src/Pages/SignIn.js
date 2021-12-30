@@ -52,18 +52,18 @@ export default function SignIn() {
     if (email && password) {
       try {
         const user = await signIn(email, password);
-        showNotification("Sign in Successfully" , "alert", 1000);
+        showNotification("Sign in Successfully" , "success", 1000);
         localStorage.setItem("ecomUser", user.user.email);
         console.log("Sign Up Successfully", user.user.email);
         history.push("/dashboard");
       }
       catch (err) {
         console.log("Error in Signing Up", err);
-        showNotification(err.message , "alert", 1000);
+        showNotification(err.message , "error", 1000);
       }
     } 
     else {
-      showNotification("Input can't be empty", "alert", 1000);
+      showNotification("Input can't be empty", "warning", 1000);
     }
   };
 
