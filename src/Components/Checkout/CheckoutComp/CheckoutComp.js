@@ -16,6 +16,7 @@ import PaymentForm from "../Payment/Payment";
 const steps = ["Shipping address", "Payment details"];
 
 function getStepContent(step) {
+  
   switch (step) {
     case 0:
       return <AddressForm />;

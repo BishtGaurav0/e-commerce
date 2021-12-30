@@ -1,6 +1,5 @@
 a{
     text-decoration: none;
-    color: white;
     font-size: 1.5rem;
   }
   
@@ -8,7 +7,7 @@ a{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #2874f0;
+    background-color: white;
     box-shadow: 0px 7px 15px -8px rgba(40,116,240,1);
     -webkit-box-shadow: 0px 7px 15px -8px rgb(3, 3, 3);
     -moz-box-shadow: 0px 7px 15px -8px rgb(255, 255, 255);

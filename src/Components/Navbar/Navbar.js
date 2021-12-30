@@ -28,12 +28,12 @@ export default function Navbar() {
 
             <div id="right-panel">
                 <div id="login">
-                    <LoginIcon style={{color:"white"}}/>
+                    <LoginIcon style={{color:"#551A8B"}}/>
                     <Link to="/signup"> Login </Link>
                 </div>
                             
                 <div id="dashboard">
-                    <AddBusinessIcon style={{color:"white"}}/>
+                    <AddBusinessIcon style={{color:"#551A8B"}}/>
                     <Link to='/dashboard'> Dashboard </Link>
                 </div>
 
@@ -45,7 +45,7 @@ export default function Navbar() {
                 </div>
                 
                 <div id="cart">
-                    <ShoppingCartCheckoutIcon style={{color:"white"}}/>
+                    <ShoppingCartCheckoutIcon style={{color:"#551A8B"}}/>
                     <Link to='/cart'> Cart </Link>
                 </div>
             </div>

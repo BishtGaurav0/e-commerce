@@ -23,6 +23,7 @@
     flex-direction: column;
     justify-content:space-evenly;
     width: 50%;
+    margin-top: 2vh;
 }
 
 #right-top{
