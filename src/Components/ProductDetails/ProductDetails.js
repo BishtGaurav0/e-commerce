@@ -35,7 +35,7 @@ const ProductDetails = () => {
         getItems.forEach((element) => { 
           if (element.id === e.id) {
             flag = false;
-            showNotification("Product is already present in the Cart", "alert", 1000)
+            showNotification("Product is already present", "alert", 1000)
           }
         });
   

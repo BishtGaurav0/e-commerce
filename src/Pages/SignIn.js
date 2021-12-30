@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useHistory } from "react-router-dom";
 import { signIn } from "../Helpers/auth";
 import { Redirect } from "react-router-dom";
+import { showNotification } from "../Helpers/notification";
 
 function Copyright(props) {
   return (
@@ -51,17 +52,18 @@ export default function SignIn() {
     if (email && password) {
       try {
         const user = await signIn(email, password);
-        console.log("Sign Up Successfully", user.user.email);
+        showNotification("Sign in Successfully" , "alert", 1000);
         localStorage.setItem("ecomUser", user.user.email);
+        console.log("Sign Up Successfully", user.user.email);
         history.push("/dashboard");
       }
       catch (err) {
         console.log("Error in Signing Up", err);
-        alert(err.message);
+        showNotification(err.message , "alert", 1000);
       }
     } 
     else {
-      alert("Input can't be empty");
+      showNotification("Input can't be empty", "alert", 1000);
     }
   };
 
@@ -109,7 +111,7 @@ export default function SignIn() {
             <Box
               component="form"
               noValidate
-              onSubmit={(e) => handleSubmit(e)}
+              onSubmit={handleSubmit}
               sx={{ mt: 1 }}
             >
               <TextField

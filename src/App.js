@@ -11,11 +11,6 @@ import CheckoutComp from './Components/Checkout/CheckoutComp/CheckoutComp';
 import CarouselComp from './Components/CarouselComp/CarouselComp';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
 
-import Noty from 'noty';  
-import "../node_modules/noty/lib/noty.css";  
-// import "../node_modules/noty/lib/themes/bootstrap-v4.css"; 
-
-
 function App() {
 
   const userEmail = localStorage.getItem("ecomUser")

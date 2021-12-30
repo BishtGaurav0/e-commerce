@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useHistory } from "react-router-dom";
 import { signUp } from "../Helpers/auth";
 import { Redirect } from "react-router-dom";
+import { showNotification } from "../Helpers/notification";
 
 function Copyright(props) {
   return (
@@ -58,11 +59,11 @@ export default function SignUp() {
       } 
       catch (err) {
         console.log("error in signup", err);
-        alert(err.message);
+        showNotification(err.message);
       }
     }
      else {
-      alert("Input Can't be empty ..");
+      showNotification("Input Can't be empty ");
     }
   };
 
