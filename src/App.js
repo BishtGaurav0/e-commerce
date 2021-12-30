@@ -11,6 +11,11 @@ import CheckoutComp from './Components/Checkout/CheckoutComp/CheckoutComp';
 import CarouselComp from './Components/CarouselComp/CarouselComp';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
 
+import Noty from 'noty';  
+import "../node_modules/noty/lib/noty.css";  
+// import "../node_modules/noty/lib/themes/bootstrap-v4.css"; 
+
+
 function App() {
 
   const userEmail = localStorage.getItem("ecomUser")
@@ -26,7 +31,6 @@ function App() {
     )
   }
 
-  
   return (
     <div className="App">
       <Router>
@@ -39,8 +43,6 @@ function App() {
           <PrivateRoute exact path = {'/product'} Component={ProductDetails} />
           <PrivateRoute exact path = {'/cart'} Component={Cart} />
           <PrivateRoute exact path = {'/checkout'} Component={CheckoutComp} />
-          
-
           <Route component={FourOFour} />
         </Switch>
       </Router>

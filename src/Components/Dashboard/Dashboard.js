@@ -8,16 +8,16 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Footer from "../Footer/Footer";
-
 import LoadingGif from '../../Assests/Loading.gif'
 import { useHistory } from "react-router-dom";
+import { showNotification } from "../../Helpers/notification";
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [readMore, setReadMore] = useState(false);
 
-  // console.log("data is ", data);
+  console.log("data is ", data);
 
   const history = useHistory();
 
@@ -53,7 +53,7 @@ const Dashboard = () => {
     let flag = true; // data is present
 
     if (getItems === undefined || getItems === null) {
-      alert("Added to the cart");
+      showNotification("Added to the Cart", "alert", 1000)
       cartItem.push(e);
       localStorage.setItem("cart", JSON.stringify(cartItem));
     } else {
@@ -62,12 +62,12 @@ const Dashboard = () => {
       getItems.forEach((element) => {
         if (element.id === e.id) {
           flag = false;
-          alert("Product is already present in the Cart");
+          showNotification("Product is already present in the Cart", "alert", 1000)
         }
       });
 
       if (flag) {
-        alert("Added to the cart");
+        showNotification("Added to the Cart", "alert", 1000)
         list = [e, ...getItems];
         localStorage.setItem("cart", JSON.stringify(list));
       }

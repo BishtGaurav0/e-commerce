@@ -6,10 +6,10 @@ import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import LoginIcon from '@mui/icons-material/Login';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import logo from '../../Assests/logo.png'
+
 export default function Navbar() {
     let cartItems = JSON.parse(localStorage.getItem("cart"));
-    // console.log("Products in cart", cartItems.length);
-
+    
     return (    
         <>
          <nav id="navbar">
@@ -39,8 +39,8 @@ export default function Navbar() {
 
                 <div className='cart-number'>
                     {   
-                        cartItems !==null && cartItems !== undefined ?
-                        <h1 > {cartItems.length} </h1> : "0"
+                        cartItems?.length > 0 ?
+                        <label> {cartItems.length} </label> : "0"
                     }
                 </div>
                 

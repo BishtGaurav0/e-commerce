@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./Cart.css";
 import Card from "@mui/material/Card";
 import emptyCart from '../../Assests/emptyCart.gif'
@@ -14,11 +14,22 @@ const Cart = () => {
 
   let cart =  JSON.parse(localStorage.getItem("cart"));
 
-  const [quantity, setQuantity] = useState(1);
-  
+  // let cartLength = cart.length;
+  const [quantity, setQuantity] = useState([]);
+
+  useEffect(() => {
+    let ref = [];
+
+    for(let i=0; i<15; i++){
+      ref.push(1);
+    }
+    setQuantity(ref);
+
+  }, []);
+
   let cartItem = cart?.map( function(e) {
     let obj = Object.assign({}, e);
-    obj.quantity = quantity;
+    obj.quantity = quantity[parseInt(e.id)];
     return obj;
   })
 
@@ -46,7 +57,10 @@ const Cart = () => {
 
   const handleIncQuantity = (e) => {
     console.log("Quantity Increased", e);
-    setQuantity(e.quantity + 1 );
+    let temp = quantity;
+    temp[parseInt(e.id)] += 1;
+    setQuantity(temp)
+    console.log(quantity)
   }
 
   const handleDecQuantity = (e) => {
@@ -107,7 +121,7 @@ const Cart = () => {
 
                     <Typography id="qty-btn">
                       <Button size='small' onClick = { () => handleDecQuantity(e)} > - </Button>
-                      <label> {e.quantity} </label>
+                      <label> { quantity[parseInt(e.id)] } </label>
                       <Button size='small' onClick = { () => handleIncQuantity(e)} > + </Button>
                     </Typography>
 

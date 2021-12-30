@@ -82,11 +82,12 @@ a{
     position: absolute;
     color: black;
     z-index: 1;
-    background-color: yellow;
+    background-color: orange;
     border-radius: 50%;
     font-weight: bold;
-    right: 5.8%;
-    height: 25px;
+    right: 2.6%;
+    width: 0;
+    height: 3vh;
     display: flex;
     justify-content: center;
   }

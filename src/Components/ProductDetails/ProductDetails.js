@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import GppMaybeIcon from '@mui/icons-material/GppMaybe';
+import { showNotification } from '../../Helpers/notification';
 
 const ProductDetails = () => {
     const history = useHistory();
@@ -24,25 +25,27 @@ const ProductDetails = () => {
       let flag = true; // data is present
   
       if (getItems === undefined || getItems === null) {
-        alert("Added to the cart");
+        showNotification("Added to the Cart", "alert", 1000)
         cartItem.push(e);
         localStorage.setItem("cart", JSON.stringify(cartItem));
+
       } else {
         let list = [];
   
         getItems.forEach((element) => { 
           if (element.id === e.id) {
             flag = false;
-            alert("Product is already present in the Cart");
+            showNotification("Product is already present in the Cart", "alert", 1000)
           }
         });
   
         if (flag) {
-          alert("Added to the cart");
+          showNotification("Added to the Cart", "alert", 1000)
           list = [e, ...getItems];
           localStorage.setItem("cart", JSON.stringify(list));
         }
       }
+
     };
 
     const handleCheck = () => {
