@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Navbar.css'
 import {Link} from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import LoginIcon from '@mui/icons-material/Login';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import logo from '../../Assests/logo.png'
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
+import NativeSelect from '@mui/material/NativeSelect';
 
-export default function Navbar() {
+
+export default function Navbar(props) {
     let cartItems = JSON.parse(localStorage.getItem("cart"));
     
+    let userEmail = props.userEmail;
+    // console.log(userEmail);
+
     return (    
         <>
          <nav id="navbar">
@@ -28,8 +37,8 @@ export default function Navbar() {
 
             <div id="right-panel">
                 <div id="login">
-                    <LoginIcon style={{color:"#551A8B"}}/>
-                    <Link to="/signup"> Login </Link>
+                    {!userEmail ? <LoginIcon style={{color:"#551A8B"}}/> : <AccountCircleIcon style={{color:'#551A8B'}}/> }
+                    <Link to="/signup"> {userEmail ? userEmail.slice(0, -10) : "Login"} </Link>
                 </div>
                             
                 <div id="dashboard">

@@ -74,7 +74,8 @@ const ProductDetails = () => {
                     <img 
                         src={data.preview} 
                         alt="preview"  
-                        style={ {width: "20vw", height: "70vh", objectFit: "cover"} } />
+                        id='preview'
+                    />
 
                 </div>
             </div>

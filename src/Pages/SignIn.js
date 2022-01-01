@@ -5,7 +5,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -26,7 +26,7 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="/" style={{ fontSize: "18px" }}>
+      <Link color="inherit" to="/" style={{fontSize:'1rem', color:'black', fontFamily:'Roboto', fontStyle:'italic'}}>
         Shop Easy
       </Link>{" "}
       {new Date().getFullYear()}
@@ -42,7 +42,7 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
   const [terms, setTerms] = useState(false);
 
-  console.log(terms);
+  // console.log(terms);
 
   const history = useHistory();
 
@@ -155,13 +155,13 @@ export default function SignIn() {
 
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
+                  <Link to="#" style={{fontSize:'1rem', color:'black', fontFamily:'Roboto', fontStyle:'italic'}}>
                     Forgot password?
                   </Link>
                 </Grid>
 
                 <Grid item>
-                  <Link href="/signup" variant="body2">
+                  <Link to="/signup" style={{fontSize:'1rem', color:'black', fontFamily:'Roboto', fontStyle:'italic'}}>
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>

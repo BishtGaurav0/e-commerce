@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css';
 import {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import SignIn from './Pages/SignIn';
@@ -12,10 +12,13 @@ import CarouselComp from './Components/CarouselComp/CarouselComp';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
 
 function App() {
-  let userEmail = localStorage.getItem("ecomUser")
+  const [userEmail, setUserEmail] = useState("");
 
+  useEffect(() => {
+    setUserEmail(localStorage.getItem("ecomUser"));
+  }, [userEmail])
+  
   function PrivateRoute ({Component, path}) {
-    userEmail = localStorage.getItem("ecomUser")
     return (
       <Route 
       path={path}
@@ -29,7 +32,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar/>
+        <Navbar userEmail = {userEmail} />
         <Switch>
           <Route exact path={'/'} component={CarouselComp} />
           <Route exact path = {'/signup'} component={SignUp} />

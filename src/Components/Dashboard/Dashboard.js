@@ -13,13 +13,12 @@ import { useHistory } from "react-router-dom";
 import { showNotification } from "../../Helpers/notification";
 
 const Dashboard = () => {
+  const history = useHistory();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [readMore, setReadMore] = useState(false);
 
-  console.log("data is ", data);
-
-  const history = useHistory();
+  // console.log("data is ", data);
 
   const fetchData = async () => {
     try {
@@ -76,12 +75,12 @@ const Dashboard = () => {
 
   return (
     <div >
-      <div style={{backgroundColor:'whitesmoke', padding:'2vh 0'}}>
+      <div>
         {!loading ? (
           <div className="card-details">
             {
             data.map((e, i) => (
-              <Card sx={{ maxWidth: 345, height: 510, borderRadius:'8px'}} key={i} >
+              <Card sx={{ maxWidth: 345, height: 500, borderRadius:'8px'}} key={i} id='card' >
                 <CardMedia
                   component="img"
                   image={e.preview}
@@ -89,7 +88,7 @@ const Dashboard = () => {
                   style={{
                     width: "200px",
                     height: "250px",
-                    objectFit: "cover",
+                    objectFit: "fill",
                     margin: "0 auto",
                     padding: "20px",
                   }}

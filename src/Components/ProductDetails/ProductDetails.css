@@ -18,12 +18,22 @@
     justify-content: space-evenly;
 }
 
+#preview {
+    width: 20vw;
+    height: 70vh;
+    object-fit: cover;
+}
+
+/* #preview:hover {
+    transform: scale(1.5);
+} */
+
+
 #right-bar {
     display: flex;
     flex-direction: column;
     justify-content:space-evenly;
     width: 50%;
-    margin-top: 2vh;
 }
 
 #right-top{

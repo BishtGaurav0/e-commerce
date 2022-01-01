@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import "./Cart.css";
 import Card from "@mui/material/Card";
 import emptyCart from '../../Assests/emptyCart.gif'
@@ -26,7 +26,8 @@ const Cart = () => {
   console.log(cartItem);
 
 
-  // ---------------------------------------------------
+  // Summary Values
+  
   let total = 0;
   let promoDiscount = Math.random().toFixed(2) * 20 ; 
   let shippingFee = Math.random().toFixed(2) * 75 ;
@@ -36,8 +37,7 @@ const Cart = () => {
   
   if(cartItem !== null && cartItem !== undefined){
     items = cartItem.length ;
-    // console.log(items) ;
-    
+
     cartItem.map((e) => {
       return total += e.price ;
     })
@@ -45,6 +45,7 @@ const Cart = () => {
   
   let orderTotal = (total - promoDiscount + shippingFee); 
 
+  // handle Buttons 
   const handleIncQuantity = (e) => {
     
   }
@@ -65,7 +66,6 @@ const Cart = () => {
     localStorage.setItem("cart", JSON.stringify(newCart));
     history.push('/cart');
   }
-
 
   return (
     <div>
