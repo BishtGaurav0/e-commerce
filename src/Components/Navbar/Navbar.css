@@ -17,7 +17,10 @@ a{
     position: sticky;
     padding:0 50px;
     z-index: 2;
-    margin-bottom: 8vh;
+  }
+  
+  #mobile-nav{
+    display: none;
   }
   
   #left-panel a{
@@ -91,4 +94,35 @@ a{
     display: flex;
     justify-content: center;
   }
-  
+
+  /* Responsive */
+
+  @media screen and (max-width:768px) {
+    #navbar {
+      display: none;
+    }
+    
+    #mobile-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      background-color: white;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      box-shadow: 0px 7px 15px -8px rgba(40,116,240,1);
+      -webkit-box-shadow: 0px 7px 15px -8px rgb(3, 3, 3);
+      -moz-box-shadow: 0px 7px 15px -8px rgb(255, 255, 255);
+
+    }
+
+    #mob-right {
+      display: flex;
+    }
+    
+    #mob-right div {
+      margin-right: 20px;
+    }
+
+  }

@@ -1,7 +1,15 @@
 .carousel img {
-    height: 75vh;
+    height: 70vh;
 }
 
 .carousel {
     cursor: pointer;
 }
+
+ /* Responsive */
+
+ @media screen and (max-width:768px) {
+     .carousel img {
+        height: 30vh;
+     }
+ }

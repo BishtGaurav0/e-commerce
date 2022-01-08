@@ -7,53 +7,39 @@ import Footer from '../Footer/Footer';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import GppMaybeIcon from '@mui/icons-material/GppMaybe';
 import { showNotification } from '../../Helpers/notification';
+import { useSelector, useDispatch } from 'react-redux';
+import { addToCart } from '../../State/Action';
 
 const ProductDetails = () => {
     const history = useHistory();
+    const dispatch = useDispatch();
+
     const [inputPin, setInputPin] = useState("")
     const [showVerify, setshowVerify] = useState(false);
-    
-    const data = JSON.parse(localStorage.getItem("product-info")) ;
+    const cartData = useSelector((state) => state.cartData)
+    const data = useSelector((state) => state.viewDetail)
+
+    // const data = JSON.parse(localStorage.getItem("product-info")) ;
     // console.log("in product",data);
 
     let ratings = Math.random() * (4.5-3+1) + 3;
 
-    let cartItem = [];
     const handleAddToCart = (e) => {
-      let getItems = JSON.parse(localStorage.getItem("cart"));
-  
-      let flag = true; // data is present
-  
-      if (getItems === undefined || getItems === null) {
-        showNotification("Added to the Cart", "success", 1000)
-        cartItem.push(e);
-        localStorage.setItem("cart", JSON.stringify(cartItem));
-
-      } else {
-        let list = [];
-  
-        getItems.forEach((element) => { 
-          if (element.id === e.id) {
-            flag = false;
-            showNotification("Product is already present", "warning", 1000);
-          }
-        });
-  
-        if (flag) {
-          showNotification("Added to the Cart", "success", 1000)
-          list = [e, ...getItems];
-          localStorage.setItem("cart", JSON.stringify(list));
+        if(cartData.findIndex((element) => element.id === e.id) > -1 ) {
+          showNotification("Product is already present", "warning", 1000)
+          return;
+        } else{
+          dispatch(addToCart(e));
+          showNotification("Added to the cart", "success", 1000)
         }
-      }
-
-    };
+      };
 
     const handleCheck = () => {
         inputPin.length > 6 || inputPin.length < 6 ? setshowVerify(false): setshowVerify(true);
     }
 
     const handleBuyNow = () => {
-        console.log("Buy Now");
+        // console.log("Buy Now");
         history.push('/checkout');
     }
 
@@ -65,7 +51,7 @@ const ProductDetails = () => {
                     {
                         data.photos.map( (e, i)=> (
                             <img src={e} alt="photos" key={i}
-                                style={ {width: "6vw", maxHeight: "11.5vh", objectFit: "fill"} } />
+                                style={ {width: "5vw", height: "10vh", objectFit: "fill"} } />
                         ) )
                     }
                 </div>
@@ -79,7 +65,6 @@ const ProductDetails = () => {
 
                 </div>
             </div>
-
 
             <div id='right-bar'>
                 <div id='right-top'>

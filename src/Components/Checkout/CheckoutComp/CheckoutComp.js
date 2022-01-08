@@ -35,6 +35,7 @@ export default function Checkout() {
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
+    
   };
 
   const handleBack = () => {
@@ -75,7 +76,7 @@ export default function Checkout() {
                   Thank you for your order.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Your order number is #{orderNumber}. We have emailed your order
+                  Your order number is <strong> #{orderNumber} </strong>. We have emailed your order
                   confirmation, and will send you an update when your order has
                   shipped.
                 </Typography>

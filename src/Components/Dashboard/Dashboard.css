@@ -1,12 +1,12 @@
 .card-details {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    row-gap: 5vw;
-    text-align: justify;
-    margin: 50px;
-    padding: 20px;
+    display: flex;
+    max-width: 1300px;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-top: 5vh;
     justify-content: space-between;
-   
+    row-gap: 100px;
+    
 }
 
 #loading {

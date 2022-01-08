@@ -1,23 +1,15 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import './Dashboard.css'
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Footer from "../Footer/Footer";
 import LoadingGif from '../../Assests/Loading.gif'
-import { useHistory } from "react-router-dom";
-import { showNotification } from "../../Helpers/notification";
+import CardData from '../Card/Card'
+import CarouselComp from "../CarouselComp/CarouselComp";
 
 const Dashboard = () => {
-  const history = useHistory();
+
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [readMore, setReadMore] = useState(false);
-
   // console.log("data is ", data);
 
   const fetchData = async () => {
@@ -37,117 +29,22 @@ const Dashboard = () => {
   }, []);
 
 
-  // shop now
-  const handleShopNow = (e) => {
-    console.log("productInfo",e);
-    localStorage.setItem("product-info", JSON.stringify(e));
-    history.push('/product');
-  }
+  // useEffect(()=>{
+  //   let temp = data.filter((itm, i)=> {return {...itm, quantity:1}}) ;
+  //   setData(temp);
+  // }, [data])
 
-  // add to cart
-  let cartItem = [];
-  const handleAddToCart = (e) => {
-    let getItems = JSON.parse(localStorage.getItem("cart"));
-
-    let flag = true; // data is present
-
-    if (getItems === undefined || getItems === null) {
-      showNotification("Added to the Cart", "success", 1000)
-      cartItem.push(e);
-      localStorage.setItem("cart", JSON.stringify(cartItem));
-    } else {
-      let list = [];
-
-      getItems.forEach((element) => {
-        if (element.id === e.id) {
-          flag = false;
-          showNotification("Product is already present", "warning", 1000)
-        }
-      });
-
-      if (flag) {
-        showNotification("Added to the Cart", "success", 1000)
-        list = [e, ...getItems];
-        localStorage.setItem("cart", JSON.stringify(list));
-      }
-    }
-  };
 
   return (
     <div >
+      <CarouselComp/>
+      
       <div>
         {!loading ? (
           <div className="card-details">
             {
-            data.map((e, i) => (
-              <Card sx={{ maxWidth: 345, height: 500, borderRadius:'8px'}} key={i} id='card' >
-                <CardMedia
-                  component="img"
-                  image={e.preview}
-                  alt="green iguana"
-                  style={{
-                    width: "200px",
-                    height: "250px",
-                    objectFit: "fill",
-                    margin: "0 auto",
-                    padding: "20px",
-                  }}
-                />
-
-                <CardContent >
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="div"
-                    style={{ textAlign: "center", fontFamily:'Philospher' }}
-                  >
-                    {e.title}
-                  </Typography>
-
-                  <Typography variant="body"  color="text" style={{fontFamily:"'Philosopher', sans-serif"}}>
-                    {readMore ? e.description : e.description.substr(0, 100)}
-                    <Button
-                      onClick={() => setReadMore(!readMore)}
-                      style={{ textTransform: "lowercase" }}
-                    >
-                      {readMore ? "show less" : "read more"}
-                    </Button>
-                  </Typography>
-
-                  <Typography
-                    variant="body2"
-                    style={{
-                      color: "black",
-                      fontWeight: "800",
-                      fontSize: "1rem",
-                      fontFamily:"'Philosopher', sans-serif"
-                    }}
-                  >
-                    Rs. {e.price}
-                  </Typography>
-                </CardContent>
-
-                <CardActions
-                  style={{ display: "flex", justifyContent: "space-around" }} >
-                    <Button 
-                      size="large" 
-                      variant="outlined"
-                      onClick={ () => handleShopNow(e)}
-                    > 
-                      Shop Now 
-                    </Button>
-
-                    <Button 
-                      size="large"
-                      variant="contained" 
-                      onClick={() => handleAddToCart(e)}
-                    >
-                      Add to Cart{" "}
-                    </Button>
-                  
-                </CardActions>
-              </Card>
-            ))}
+            data.map((e, i) => <CardData e={e} key={i}/>
+            )}
           </div>
         ) : (
           <div id="loading">

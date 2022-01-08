@@ -16,6 +16,8 @@ import { useHistory } from "react-router-dom";
 import { signUp } from "../Helpers/auth";
 import { Redirect } from "react-router-dom";
 import { showNotification } from "../Helpers/notification";
+import { useDispatch } from "react-redux";
+import { login } from "../State/Action";
 
 function Copyright(props) {
   return (
@@ -38,6 +40,8 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
+  const dispatch = useDispatch();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -55,6 +59,7 @@ export default function SignUp() {
       try {
         await signUp(email, password);
         console.log("Signup Successfully");
+        dispatch(login(email));
         history.push("/signin");
         showNotification("Sign up Successfully", "success", 1000)
       } 
@@ -70,7 +75,7 @@ export default function SignUp() {
 
   
   if(localStorage.getItem("ecomUser")) {
-    return <Redirect to ='/dashboard' /> 
+    return <Redirect to ='/' /> 
   } 
 
 

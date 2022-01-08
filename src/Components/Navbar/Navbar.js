@@ -1,24 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Navbar.css'
 import {Link} from 'react-router-dom';
+import logo from '../../Assests/logo.png'
 import SearchIcon from '@mui/icons-material/Search';
-import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import LoginIcon from '@mui/icons-material/Login';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
-import logo from '../../Assests/logo.png'
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
-import NativeSelect from '@mui/material/NativeSelect';
+import { useHistory } from "react-router-dom";
+import {signout} from '../../Helpers/auth'
+import { showNotification } from '../../Helpers/notification';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../../State/Action';
 
+export default function Navbar() {
+    const history = useHistory();
+    const dispatch = useDispatch();
 
-export default function Navbar(props) {
-    let cartItems = JSON.parse(localStorage.getItem("cart"));
+    let cartItems = useSelector((state) => state.cartData)
+    let userEmail = useSelector((state) => state.userRed?.userName);
+
+    const handleSignOut = async(e) => {       
+        try{ 
+            await signout();
+            dispatch(logout())  
+            showNotification("Sign Out Successfully","warning" ,1000)
+            console.log("Sign out successfully");
+            history.push('/');
+        } catch(err) {
+            console.log(err);
+        }
+    }
     
-    let userEmail = props.userEmail;
-    // console.log(userEmail);
-
     return (    
         <>
          <nav id="navbar">
@@ -40,11 +53,14 @@ export default function Navbar(props) {
                     {!userEmail ? <LoginIcon style={{color:"#551A8B"}}/> : <AccountCircleIcon style={{color:'#551A8B'}}/> }
                     <Link to="/signup"> {userEmail ? userEmail.slice(0, -10) : "Login"} </Link>
                 </div>
-                            
-                <div id="dashboard">
-                    <AddBusinessIcon style={{color:"#551A8B"}}/>
-                    <Link to='/dashboard'> Dashboard </Link>
-                </div>
+
+                {
+                    userEmail &&
+                        <div id="sign-out">
+                            <ExitToAppIcon style={{color:"#551A8B"}}/>
+                            <Link to="" onClick={handleSignOut}> Sign Out </Link>
+                        </div>
+                }
 
                 <div className='cart-number'>
                     {   
@@ -59,6 +75,22 @@ export default function Navbar(props) {
                 </div>
             </div>
 
+         </nav>
+
+         <nav id='mobile-nav'>
+                <div>
+                    <Link to = '/' > <img src={logo} alt='logo' className='logo'/> </Link>
+                </div>
+
+                <div id='mob-right'>
+                    <div>
+                        <Link to= '/signup'> <AccountCircleIcon style={{color:'#551A8B'}}/> </Link>
+                    </div>
+
+                    <div>
+                        <Link to='/cart'> <ShoppingCartCheckoutIcon style={{color:"#551A8B"}}/> </Link>
+                    </div>
+                </div>
          </nav>
         </>
     )

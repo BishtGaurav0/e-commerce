@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './App.css';
 import {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import SignIn from './Pages/SignIn';
@@ -8,16 +8,11 @@ import Navbar from './Components/Navbar/Navbar';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Cart from './Components/Cart/Cart';
 import CheckoutComp from './Components/Checkout/CheckoutComp/CheckoutComp';
-import CarouselComp from './Components/CarouselComp/CarouselComp';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
+import { useSelector } from 'react-redux';
 
 function App() {
-  const [userEmail, setUserEmail] = useState("");
-
-  useEffect(() => {
-    setUserEmail(localStorage.getItem("ecomUser"));
-  }, [userEmail])
-  
+  const userEmail = useSelector((state)=> state.userRed?.userName);
   function PrivateRoute ({Component, path}) {
     return (
       <Route 
@@ -32,13 +27,12 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar userEmail = {userEmail} />
+        <Navbar/>
         <Switch>
-          <Route exact path={'/'} component={CarouselComp} />
+          <Route exact path = {'/'} component={Dashboard} />
           <Route exact path = {'/signup'} component={SignUp} />
           <Route exact path = {'/signin'} component={SignIn} />
-          <PrivateRoute exact path = {'/dashboard'} Component={Dashboard} />
-          <PrivateRoute exact path = {'/product'} Component={ProductDetails} />
+          <Route exact path = {'/product'} component={ProductDetails} />
           <PrivateRoute exact path = {'/cart'} Component={Cart} />
           <PrivateRoute exact path = {'/checkout'} Component={CheckoutComp} />
           <Route component={FourOFour} />

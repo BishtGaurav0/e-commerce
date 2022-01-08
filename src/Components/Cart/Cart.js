@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./Cart.css";
 import Card from "@mui/material/Card";
-import emptyCart from '../../Assests/emptyCart.gif'
+import emptyCartGif from '../../Assests/emptyCart.gif'
 import Typography from "@mui/material/Typography";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -9,22 +9,24 @@ import { Button, CardActions } from "@mui/material";
 import {useHistory,Link } from "react-router-dom";
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import { showNotification } from "../../Helpers/notification";
+import { useSelector, useDispatch } from "react-redux";
+import { emptyCart, removeFromCart } from "../../State/Action";
 
 const Cart = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
-  let cart =  JSON.parse(localStorage.getItem("cart"));
-
+  let cartItem =  useSelector((state) => state.cartData)
   const [quantity, setQuantity] = useState(1);
+  // let quantity = 1;
 
-  let cartItem = cart?.map( function(e) {
-    let obj = Object.assign({}, e);
-    obj.quantity = quantity
-    return obj;
-  })
+  // let cartItem = cart?.map( function(e) {
+  //   let obj = Object.assign({}, e);
+  //   obj.quantity = quantity
+  //   return obj;
+  // })
 
   console.log(cartItem);
-
 
   // Summary Values
   
@@ -47,24 +49,22 @@ const Cart = () => {
 
   // handle Buttons 
   const handleIncQuantity = (e) => {
-    
+    setQuantity(quantity + 1)
   }
 
   const handleDecQuantity = (e) => {
-    console.log("Quantity Decreased", e);
+    setQuantity(quantity - 1)
   }
 
-  const handlePlacedOrder = () => {
-    localStorage.removeItem("cart");
+  const handleCheckout = () => {
+    // localStorage.removeItem("cart");
+    dispatch(emptyCart())
     history.push("/checkout");
   };
 
   const handleRemoveCart = (id) => {
-    let newCart = cartItem.filter( (e)=> e.id !== id );
-    console.log(newCart) ;  
+    dispatch(removeFromCart(id))
     showNotification("Item removed from the cart", "info", 1000);
-    localStorage.setItem("cart", JSON.stringify(newCart));
-    history.push('/cart');
   }
 
   return (
@@ -107,7 +107,7 @@ const Cart = () => {
 
                     <Typography id="qty-btn">
                       <Button size='small' onClick = { () => handleDecQuantity(e)} > - </Button>
-                      <label> { e.quantity } </label>
+                      <label> { quantity } </label>
                       <Button size='small' onClick = { () => handleIncQuantity(e)} > + </Button>
                     </Typography>
 
@@ -129,7 +129,7 @@ const Cart = () => {
           ) : (
             <div className="empty-cart">
               <img
-                src={emptyCart}
+                src={emptyCartGif}
                 alt="empty cart"
               />
             </div>
@@ -167,7 +167,7 @@ const Cart = () => {
               color="secondary"
               size="large"
               style={{ marginLeft: "auto", marginRight: "auto" }}
-              onClick={handlePlacedOrder}
+              onClick={handleCheckout}
               >
               CHECKOUT
               
