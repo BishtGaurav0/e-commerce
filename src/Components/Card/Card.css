@@ -1,0 +1,11 @@
+#card {
+    width: 345px;
+    min-height: 520px;
+    border-radius: 8px;
+}
+
+@media screen and (max-width:768px) {
+    #card {
+        width: auto;
+    }
+}

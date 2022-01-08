@@ -106,9 +106,9 @@ a{
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 20px;
       background-color: white;
       position: sticky;
+      padding :10px;
       top: 0;
       z-index: 2;
       box-shadow: 0px 7px 15px -8px rgba(40,116,240,1);

@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import './Card.css'
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -21,9 +22,7 @@ function CardData({e, i}) {
     
   // view Details
   const handleViewDetails = (e) => {
-    console.log("productInfo",e);
     dispatch(viewDetails(e))
-    // localStorage.setItem("product-info", JSON.stringify(e));
     history.push('/product');
   }
     
@@ -40,7 +39,7 @@ function CardData({e, i}) {
     
   return (
       <div>
-        <Card sx={{ maxWidth: 345, minHeight: 520, borderRadius:'8px'}} key={i} id='card' >
+        <Card key={i} id='card' >
           <CardMedia
             component="img"
             image={e.preview}

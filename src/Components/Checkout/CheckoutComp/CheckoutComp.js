@@ -72,13 +72,11 @@ export default function Checkout() {
           <React.Fragment>
             {activeStep === steps.length ? (
               <React.Fragment>
-                <Typography variant="h5" gutterBottom>
+                <Typography variant="h4" gutterBottom  style={{textAlign:'center'}}>
                   Thank you for your order.
                 </Typography>
-                <Typography variant="subtitle1">
-                  Your order number is <strong> #{orderNumber} </strong>. We have emailed your order
-                  confirmation, and will send you an update when your order has
-                  shipped.
+                <Typography variant="subtitle1"  style={{textAlign:'center'}}>
+                  Your order number is <strong> {orderNumber} </strong>. 
                 </Typography>
               </React.Fragment>
             ) : (

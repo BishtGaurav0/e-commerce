@@ -1,12 +1,11 @@
 .card-details {
     display: flex;
-    max-width: 1300px;
+    justify-content: space-between;
     flex-wrap: wrap;
+    max-width: 1300px;
     margin: auto;
     margin-top: 5vh;
-    justify-content: space-between;
     row-gap: 100px;
-    
 }
 
 #loading {

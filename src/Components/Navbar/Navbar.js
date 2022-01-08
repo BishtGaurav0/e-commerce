@@ -6,7 +6,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import LoginIcon from '@mui/icons-material/Login';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useHistory } from "react-router-dom";
 import {signout} from '../../Helpers/auth'
 import { showNotification } from '../../Helpers/notification';
@@ -70,7 +70,7 @@ export default function Navbar() {
                 </div>
                 
                 <div id="cart">
-                    <ShoppingCartCheckoutIcon style={{color:"#551A8B"}}/>
+                    <ShoppingCartIcon style={{color:"#551A8B"}}/>
                     <Link to='/cart'> Cart </Link>
                 </div>
             </div>
@@ -84,11 +84,11 @@ export default function Navbar() {
 
                 <div id='mob-right'>
                     <div>
-                        <Link to= '/signup'> <AccountCircleIcon style={{color:'#551A8B'}}/> </Link>
+                        <Link to='/signup'> {!userEmail ? <LoginIcon style={{color:"#551A8B"}}/> : <AccountCircleIcon style={{color:'#551A8B'}}/>} </Link>
                     </div>
 
                     <div>
-                        <Link to='/cart'> <ShoppingCartCheckoutIcon style={{color:"#551A8B"}}/> </Link>
+                        <Link to='/cart'> <ShoppingCartIcon style={{color:"#551A8B"}}/> ({cartItems.length}) </Link>
                     </div>
                 </div>
          </nav>

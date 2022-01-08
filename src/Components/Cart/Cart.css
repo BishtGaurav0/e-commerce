@@ -1,12 +1,20 @@
 .cart {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .cart-heading {
     text-align: center;
     padding-bottom: 20px;
     border-bottom: 2px solid gainsboro;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
 }
 
 #cart-name h3{
@@ -16,14 +24,12 @@
 #cart-brand {
     font-size: 1.2rem;
     margin:20px 0;
-    
 }
 
 #cart-price {
     font-family: 'Philospher';
     font-weight: 500;
     margin:20px 0;
-    
 }
 
 #qty-btn {
@@ -41,8 +47,7 @@
 .order-summary {
     text-align: center;
     background-color: whitesmoke;
-    height: 45%;
-    width: 20%;
+    height: 50%;
     padding: 40px;
     border-radius: 10px;
 }
@@ -57,14 +62,22 @@
     justify-content: space-between;
 }
 
-.cart-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 10px;
+.summary h3{
+    margin-right: 100px;
+
 }
 
 .empty-cart img {
     height: 40vh;
     margin-top: 20px;
+}
+
+/* Responsive */
+
+@media screen and (max-width:768px) {
+    .cart-item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
 }
