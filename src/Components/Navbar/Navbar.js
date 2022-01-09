@@ -12,6 +12,7 @@ import {signout} from '../../Helpers/auth'
 import { showNotification } from '../../Helpers/notification';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../State/Action';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 export default function Navbar() {
     const history = useHistory();
@@ -78,19 +79,30 @@ export default function Navbar() {
          </nav>
 
          <nav id='mobile-nav'>
+            <div>
+                <Link to = '/' > <img src={logo} alt='logo' className='logo'/> </Link>
+            </div>
+
+            <div id='mob-right'>
                 <div>
-                    <Link to = '/' > <img src={logo} alt='logo' className='logo'/> </Link>
+                    <Link to='/signup'> {!userEmail ? <LoginIcon style={{color:"#551A8B"}}/> : <AccountCircleIcon style={{color:'#551A8B'}}/>} </Link>
                 </div>
 
-                <div id='mob-right'>
-                    <div>
-                        <Link to='/signup'> {!userEmail ? <LoginIcon style={{color:"#551A8B"}}/> : <AccountCircleIcon style={{color:'#551A8B'}}/>} </Link>
+            {
+                userEmail &&
+                    <div id="sign-out">
+                        <Link to=""onClick={handleSignOut} > <CancelIcon style={{color:"#551A8B"}}/> </Link>
                     </div>
-
-                    <div>
-                        <Link to='/cart'> <ShoppingCartIcon style={{color:"#551A8B"}}/> ({cartItems.length}) </Link>
-                    </div>
+            }
+                <div>
+                    <Link to='/cart'> <ShoppingCartIcon style={{color:"#551A8B"}}/></Link>
                 </div>
+                
+                <div className='cart-number'>
+                    ({cartItems.length})
+                </div>
+
+            </div>
          </nav>
         </>
     )

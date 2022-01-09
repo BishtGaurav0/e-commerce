@@ -10,7 +10,7 @@ const Dashboard = () => {
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  // console.log("data is ", data);
+  console.log("data is ", data);
 
   const fetchData = async () => {
     try {
@@ -27,7 +27,6 @@ const Dashboard = () => {
     setLoading(true);
     fetchData();
   }, []);
-
 
   // useEffect(()=>{
   //   let temp = data.filter((itm, i)=> {return {...itm, quantity:1}}) ;

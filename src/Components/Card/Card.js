@@ -28,7 +28,7 @@ function CardData({e, i}) {
     
   // add to cart
   const handleAddToCart = (e) => {
-    if(cartData.findIndex((element) => element.id == e.id) > -1 ) {
+    if(cartData.findIndex((element) => element.id === e.id) > -1 ) {
       showNotification("Product is already present", "warning", 1000)
       return;
     } else{

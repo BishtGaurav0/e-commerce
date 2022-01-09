@@ -77,7 +77,7 @@ const Cart = () => {
           cartItem !== undefined && cartItem !== null && cartItem.length > 0 ? (
             cartItem.map((e, i) => (
               <Card
-                sx={{ width: 800, minHeight: 350, margin: 1 }}
+                sx={{ width: 'auto', minHeight: 350, margin: 1 }}
                 key={i}
                 className="cart-item"
               >
