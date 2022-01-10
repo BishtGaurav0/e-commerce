@@ -49,7 +49,7 @@ const ProductDetails = () => {
             <div id='left-bar'>
                 <div id='all-photos'>
                     {
-                        data.photos.map( (e, i)=> (
+                        data.photos?.map( (e, i)=> (
                             <img src={e} alt="photos" key={i}
                                 style={ {width: "5vw", height: "10vh", objectFit: "fill"} } />
                         ) )

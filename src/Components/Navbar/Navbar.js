@@ -99,7 +99,7 @@ export default function Navbar() {
                 </div>
                 
                 <div className='cart-number'>
-                    ({cartItems.length})
+                    {cartItems?.length > 0 && (cartItems.length) }
                 </div>
 
             </div>
