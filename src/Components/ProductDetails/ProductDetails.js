@@ -14,13 +14,11 @@ const ProductDetails = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const [inputPin, setInputPin] = useState("")
+    const [inputPin, setInputPin] = useState("");
     const [showVerify, setshowVerify] = useState(false);
-    const cartData = useSelector((state) => state.cartData)
-    const data = useSelector((state) => state.viewDetail)
-
-    // const data = JSON.parse(localStorage.getItem("product-info")) ;
-    // console.log("in product",data);
+    const cartData = useSelector((state) => state.cartData);
+    const data = useSelector((state) => state.viewDetail);
+    // console.log("size", data.size)
 
     let ratings = Math.random() * (4.5-3+1) + 3;
 
@@ -45,6 +43,8 @@ const ProductDetails = () => {
 
     return (
         <>
+        {
+        data && 
         <div id='product-details'>
             <div id='left-bar'>
                 <div id='all-photos'>
@@ -127,10 +127,12 @@ const ProductDetails = () => {
             </div>
 
         </div>
+        }
         
         <div style={{marginTop:'10vh'}}>
             <Footer/>
         </div>
+
         </>
 
     )

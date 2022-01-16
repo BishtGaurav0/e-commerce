@@ -30,7 +30,6 @@
 #right-bar {
     display: flex;
     flex-direction: column;
-    /* flex-wrap: wrap; */
     justify-content:space-evenly;
     width: 50%;
     height: 80vh;
@@ -121,24 +120,34 @@
        height: auto;
        width: 100%;
        flex-direction: column;
+       padding: 0px;
    }
 
    #left-bar{
        display: flex;
        flex-direction: column;
+       margin-bottom: 50px;
+       padding: 0;
    }
 
    #all-photos {
-       display: flex;
-       flex-direction: row;
+       display: none;
    }
 
    #preview{
     width: 100%;
+    margin-top: 20px;
+    padding-bottom: 2px;
+   }
+
+   #right-top {
+    padding: auto; 
    }
 
    #right-bar {
     width: 100%;
     height: auto;
+    padding: 0;
+
    }
 }

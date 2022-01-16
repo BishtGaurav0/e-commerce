@@ -26,10 +26,10 @@ export default function Navbar() {
             await signout();
             dispatch(logout())  
             showNotification("Sign Out Successfully","warning" ,1000)
-            console.log("Sign out successfully");
+            // console.log("Sign out successfully");
             history.push('/');
         } catch(err) {
-            console.log(err);
+            // console.log(err);
         }
     }
     

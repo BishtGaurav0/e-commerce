@@ -59,7 +59,7 @@ export default function SignIn() {
         showNotification("Sign in Successfully" , "success", 1000);
         // localStorage.setItem("ecomUser", user.user.email);
         dispatch(login(email));
-        console.log("Sign Up Successfully", user.user.email);
+        // console.log("Sign Up Successfully", user.user.email);
         history.push("/");
       }
       catch (err) {

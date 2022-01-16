@@ -58,13 +58,13 @@ export default function SignUp() {
     if (firstName && lastName && email && password && terms) {
       try {
         await signUp(email, password);
-        console.log("Signup Successfully");
+        // console.log("Signup Successfully");
         dispatch(login(email));
         history.push("/signin");
         showNotification("Sign up Successfully", "success", 1000)
       } 
       catch (err) {
-        console.log("error in signup", err);
+        // console.log("error in signup", err);
         showNotification(err.message, "error", 1000);
       }
     }

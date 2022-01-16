@@ -10,7 +10,7 @@ const Dashboard = () => {
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  console.log("data is ", data);
+  // console.log("data is ", data);
 
   const fetchData = async () => {
     try {

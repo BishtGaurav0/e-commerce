@@ -26,7 +26,7 @@ const Cart = () => {
   //   return obj;
   // })
 
-  console.log(cartItem);
+  // console.log(cartItem);
 
   // Summary Values
   

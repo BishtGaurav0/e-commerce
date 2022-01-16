@@ -79,4 +79,9 @@
         flex-direction: column;
         flex-wrap: wrap;
     }
+
+    .order-summary {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
 }
