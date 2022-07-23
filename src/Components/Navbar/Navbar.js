@@ -52,7 +52,7 @@ export default function Navbar() {
             <div id="right-panel">
                 <div id="login">
                     {!userEmail ? <LoginIcon style={{color:"#551A8B"}}/> : <AccountCircleIcon style={{color:'#551A8B'}}/> }
-                    <Link to="/signup"> {userEmail ? userEmail.slice(0, -10) : "Login"} </Link>
+                    <Link to="/signup"> {userEmail ? userEmail.slice(0, -10).toUpperCase() : "Login"} </Link>
                 </div>
 
                 {

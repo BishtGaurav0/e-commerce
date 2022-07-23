@@ -44,7 +44,8 @@ const ProductDetails = () => {
     return (
         <>
         {
-        data && 
+        
+        data && data != undefined &&
         <div id='product-details'>
             <div id='left-bar'>
                 <div id='all-photos'>
@@ -129,7 +130,7 @@ const ProductDetails = () => {
         </div>
         }
         
-        <div style={{marginTop:'10vh'}}>
+        <div style={{marginTop:'2vh'}}>
             <Footer/>
         </div>
 
