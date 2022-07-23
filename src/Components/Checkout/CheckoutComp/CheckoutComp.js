@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -12,11 +12,11 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AddressForm from "../Address/Address";
 import PaymentForm from "../Payment/Payment";
+import orderPlaced from "../../../Assests/orderPlaced.gif";
 
 const steps = ["Shipping address", "Payment details"];
 
 function getStepContent(step) {
-  
   switch (step) {
     case 0:
       return <AddressForm />;
@@ -35,7 +35,6 @@ export default function Checkout() {
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
-    
   };
 
   const handleBack = () => {
@@ -72,11 +71,21 @@ export default function Checkout() {
           <React.Fragment>
             {activeStep === steps.length ? (
               <React.Fragment>
-                <Typography variant="h4" gutterBottom  style={{textAlign:'center'}}>
-                  Thank you for your order.
-                </Typography>
-                <Typography variant="subtitle1"  style={{textAlign:'center'}}>
-                  Your order number is <strong> {orderNumber} </strong>. 
+                <img
+                  style={{ display: "block", margin: "auto", height: "100px" }}
+                  src={orderPlaced}
+                />
+                <Typography
+                  variant="h4"
+                  gutterBottom
+                  style={{
+                    textAlign: "center",
+                    marginTop: "20px",
+                    fontSize: "30px",
+                  }}
+                >
+                  Your order <strong> {orderNumber} </strong> has been placed
+                  successfully..
                 </Typography>
               </React.Fragment>
             ) : (

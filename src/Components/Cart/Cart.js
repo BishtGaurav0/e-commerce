@@ -28,14 +28,11 @@ const Cart = () => {
 
   // console.log(cartItem);
 
-  // Summary Values
-  
   let total = 0;
   let promoDiscount = Math.random().toFixed(2) * 20 ; 
   let shippingFee = Math.random().toFixed(2) * 75 ;
   
   let items ;
-  
   
   if(cartItem !== null && cartItem !== undefined){
     items = cartItem.length ;
@@ -47,7 +44,6 @@ const Cart = () => {
   
   let orderTotal = (total - promoDiscount + shippingFee); 
 
-  // handle Buttons 
   const handleIncQuantity = (e) => {
     setQuantity(quantity + 1)
   }
@@ -57,7 +53,6 @@ const Cart = () => {
   }
 
   const handleCheckout = () => {
-    // localStorage.removeItem("cart");
     dispatch(emptyCart())
     history.push("/checkout");
   };
