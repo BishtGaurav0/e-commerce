@@ -46,6 +46,7 @@ export default function Navbar() {
                     type = "text"
                     placeholder = "Search for products"
                     spellCheck = "false"
+                    disabled
                 />
             </div>
 

@@ -16,17 +16,15 @@ function CardData({e, i}) {
   const dispatch = useDispatch();
   
   let cartData = useSelector((state)=>state.cartData)
-  // console.log(cartData);
 
   const [readMore, setReadMore] = useState(false);
     
-  // view Details
   const handleViewDetails = (e) => {
     dispatch(viewDetails(e))
+    window.scrollTo(0, 0);
     history.push('/product');
   }
     
-  // add to cart
   const handleAddToCart = (e) => {
     if(cartData.findIndex((element) => element.id === e.id) > -1 ) {
       showNotification("Product is already present", "warning", 1000)
@@ -43,6 +41,7 @@ function CardData({e, i}) {
           <CardMedia
             component="img"
             image={e.preview}
+            onClick={ () => handleViewDetails(e)}
             alt="green iguana"
             style={{
               width: "200px",
@@ -50,6 +49,7 @@ function CardData({e, i}) {
               objectFit: "fill",
               margin: "0 auto",
               padding: "20px",
+              cursor:'pointer'
             }}
           />
 
