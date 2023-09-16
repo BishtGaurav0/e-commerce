@@ -1,4 +1,4 @@
-a{
+  a{
     text-decoration: none;
     font-size: 20px;
     color: #551A8B;
@@ -37,8 +37,8 @@ a{
   .logo {
     border-radius: 15px;
     object-fit:fill;
-    width: 80%;
-    height: 4.5vh;
+    /* width: 80%; */
+    height: 65px;
     cursor: pointer;
   }
 
