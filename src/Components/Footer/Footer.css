@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-evenly;
     padding: 3rem;
-    background-image: url(https://static01.manyavar.com/uploads/images/footer_top_bg.jpg);
+    background-color: #511d00;
     flex-wrap: wrap;
     margin-top: 5vh;
 }
